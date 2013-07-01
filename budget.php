@@ -12,6 +12,10 @@
  require_once 'standard_functions.php';
 
  function refresh_fixed_expenses_table($db){
+ // this function is not called as this is a constant table and 
+ // does not need to be refreshed.  I wrote this very early in 
+ // the morning before I realized what I was doing :) 
+ // --kev. 2013-07-01
   $sql = "DROP TABLE IF EXISTS FixedExpenses";
   send_query($db, $sql);
   
@@ -22,32 +26,52 @@
     fChecked TINYINT
     )";
   send_query($db, $sql);
+  
+  $sql = "SELECT Config.PhoneFixedExpense, Config.NetFixedExpense, Config.RentFixedExpense, Config.CellFixedExpense, Config.MPassFixedExpense FROM Config";
+  $q = send_query($db, $sql);
+  
+  while ($row = $q->fetchAll(PDO::FETCH_ASSOC)){
+    $sql = "INSERT INTO FixedExpenses VALUES ( NULL, '$row[PhoneFixedExpense]', '$row[NetFixedExpense]', '$row[RentFixedExpense]', '$row[CellFixedExpense]', '$row[MPassFixedExpense]' )";
+    send_query($db, $sql);
+  } // end while  
   return 0;
- }
-function print_header(){
+ } // end function definition for refresh_fixed_expenses_table($db)
+ 
+function print_header($db){
 print <<<HERE
 <div class='fixed_expenses'>
   <table>
-    <tr>
-      <td><input type='checkbox' name='phone'></td>
-      <td>Phone</td>
-      <td>25.18</td>
-    </tr><tr>
-      <td><input type='checkbox' name='net'></td>
-      <td>Net</td>
-      <td>41.80</td>
-    </tr><tr>
-      <td><input type='checkbox' name='rent'></td>
-      <td>Rent</td>
-      <td>1425.10</td>
-    </tr><tr>
-      <td><input type='checkbox' name='cell'></td>
-      <td>Cell</td>
-      <td>54.24</td>
-    </tr><tr>
-      <td><input type='checkbox' name='mpass'></td>
-      <td>MPass</td>
-      <td>117.75</td>
+HERE;
+
+$sql = "SELECT
+	  FixedExpenses.Name,
+	  FixedExpenses.Amount,
+	  FixedExpenses.fChecked
+	FROM
+	  FixedExpenses
+	";
+$q = send_query($db, $sql);
+while ($row = $q->fetch(PDO::FETCH_ASSOC)){
+
+//debug
+//var_dump($row);
+
+  print "<tr>";
+print <<<HERE
+<td><input type='checkbox' name=$row[Name]
+HERE;
+  if ($row['fChecked'] == 1){
+    print " checked>";
+  } else {
+    print ">";
+  } // end else
+  print "</td>";
+  print "<td>$row[Name]</td>";
+  print "<td>$row[Amount]</td>";
+  print "</tr>";
+} // end while
+
+print <<<HERE
    </table>
 </div>
 HERE;
@@ -104,11 +128,11 @@ print "</table></div>";
 // HERE'S MAIN
 $db = connect_to_mysql();
 
-print_header();
+print_header($db);
 print_grl();
 print_run();
 
-refresh_fixed_expenses_table($db);
+
 
 unset($db);
 ?>
