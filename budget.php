@@ -1,6 +1,10 @@
 <html>
 <head>
 <title>Budget</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+<script type="text/javascript" src="budget.js"></script>
 <head>
 <body>
 <?php
@@ -10,6 +14,7 @@
 * @package budget
 */
  require_once 'standard_functions.php';
+ date_default_timezone_set('America/Toronto');
 
  function refresh_fixed_expenses_table($db){
  // this function is not called as this is a constant table and 
@@ -40,7 +45,7 @@
 function print_header($db){
 print <<<HERE
 <div class='fixed_expenses'>
-  <table>
+  <table class="fixed_expenses_table">
 HERE;
 
 $sql = "SELECT
