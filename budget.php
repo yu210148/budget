@@ -5,11 +5,25 @@
 <body>
 <?php
 /**
- * Documentation, License etc.
- *
- * @package budget
- */
+* Documentation, License etc.
+*
+* @package budget
+*/
+ require_once 'standard_functions.php';
 
+ function refresh_fixed_expenses_table($db){
+  $sql = "DROP TABLE IF EXISTS FixedExpenses";
+  send_query($db, $sql);
+  
+  $sql = "CREATE TABLE FixedExpenses (
+    FixedExpensesID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(15),
+    Amount DECIMAL(7,2),
+    fChecked TINYINT
+    )";
+  send_query($db, $sql);
+  return 0;
+ }
 function print_header(){
 print <<<HERE
 <div class='fixed_expenses'>
@@ -88,9 +102,15 @@ print "</table></div>";
 
 
 // HERE'S MAIN
+$db = connect_to_mysql();
+
 print_header();
 print_grl();
 print_run();
+
+refresh_fixed_expenses_table($db);
+
+unset($db);
 ?>
 </body>
 
