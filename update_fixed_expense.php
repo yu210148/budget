@@ -2,8 +2,10 @@
 $name = $_POST["name"];
 $location = $_POST["location"];
 
-print <<<HERE
-<h2>name is $name<BR>
-location is $location<BR>
-HERE;
+function touch_file($name, $location){
+$command = "touch /tmp/$name";
+exec($command);
+}
+
+touch_file($name);
 ?>
