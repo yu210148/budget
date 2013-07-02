@@ -1,11 +1,17 @@
 <?php
-$name = $_POST["name"];
-$location = $_POST["location"];
+require_once 'standard_functions.php';
 
-function touch_file($name, $location){
-$command = "touch /tmp/$name";
-exec($command);
+function update_db($db){
+  $sql = "UPDATE FixedExpenses SET FixedExpenses.fChecked = 0 WHERE FixedExpenses.FixedExpensesID = 1";
+  send_query($db, $sql);
 }
 
-touch_file($name);
+
+$name = $_POST["name"];
+$location = $_POST["location"];
+$db = connect_mysql_pdo();
+
+update_db($db);
+
+unset($db);
 ?>
