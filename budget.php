@@ -5,6 +5,8 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="budget.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+<link rel=StyleSheet href="budget.css" type="text/css">
 <head>
 <body>
 <?php
@@ -57,10 +59,6 @@ $sql = "SELECT
 	";
 $q = send_query($db, $sql);
 while ($row = $q->fetch(PDO::FETCH_ASSOC)){
-
-//debug
-//var_dump($row);
-
   print "<tr>";
 print <<<HERE
 <form id=fixed>

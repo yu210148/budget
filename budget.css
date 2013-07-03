@@ -1,0 +1,27 @@
+div.fixed_expenses {
+  position: absolute;
+  top: 10px;
+  left: 105px;
+  padding: 5px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: medium;
+  background-color: lightblue;
+}
+div.grl {
+  position: absolute;
+  top: 170px;
+  left: 50px;
+  padding: 5px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: medium;
+  background-color: lightgreen
+}
+div.run {
+  position: absolute;
+  top: 345px;
+  left: 25px;
+  padding: 5px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: medium;
+  background-color: lightgrey
+}
