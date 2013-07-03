@@ -63,6 +63,7 @@ while ($row = $q->fetch(PDO::FETCH_ASSOC)){
 
   print "<tr>";
 print <<<HERE
+<form id=fixed>
 <td><input type='checkbox' name=$row[Name]
 HERE;
   if ($row['fChecked'] == 1){
@@ -78,6 +79,7 @@ HERE;
 
 print <<<HERE
    </table>
+   </form>
 </div>
 HERE;
 } // end function definition for print_header()
