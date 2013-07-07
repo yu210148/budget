@@ -5,6 +5,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="budget.js"></script>
+<link rel="stylesheet" href="smoothness/jquery-ui-1.10.3.custom.min.css">
 <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 <link rel=StyleSheet href="budget.css" type="text/css">
 <head>
@@ -46,8 +47,8 @@
  
 function print_header($db){
 print <<<HERE
-<div class='fixed_expenses'>
-  <table class="fixed_expenses_table">
+<!--- <div id="fixed_expenses" class="ui-widget-content"> --->
+  <table id="fixed_expenses_table" class="ui-widget-content">
 HERE;
 
 $sql = "SELECT
@@ -78,7 +79,7 @@ HERE;
 print <<<HERE
    </table>
    </form>
-</div>
+<!--- </div> --->
 HERE;
 } // end function definition for print_header()
 

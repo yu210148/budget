@@ -1,15 +1,23 @@
-div.fixed_expenses {
+
+#fixed_expenses_table {
   position: absolute;
   top: 10px;
-  left: 105px;
-  padding: 5px;
+  left: 95px;
+  padding: 5px; 
+  width: 150px; 
+  height: 150px; 
+  padding: 0.5em;
   font-family: 'Kaushan Script', cursive;
-  font-size: medium;
-  background-color: lightblue;
+  background-color: lightblue; 
 }
+#fixed_expenses_table.td {
+  text-align: center; 
+  margin: 0;
+}
+
 div.grl {
   position: absolute;
-  top: 170px;
+  top: 185px;
   left: 50px;
   padding: 5px;
   font-family: 'Kaushan Script', cursive;
@@ -18,7 +26,7 @@ div.grl {
 }
 div.run {
   position: absolute;
-  top: 345px;
+  top: 350px;
   left: 25px;
   padding: 5px;
   font-family: 'Kaushan Script', cursive;

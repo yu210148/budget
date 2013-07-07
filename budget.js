@@ -1,5 +1,5 @@
 $(document).ready(function() {
-      $('.fixed_expenses_table :checkbox').change(function(){
+      $('#fixed_expenses_table :checkbox').change(function(){
 	dataString = $("#fixed").serialize();
 	var data = dataString;
             $.ajax({
@@ -12,3 +12,9 @@ $(document).ready(function() {
 	    
       });
 });
+
+$(function() {
+    $( "#fixed_expenses_table" ).resizable();
+    $( "#fixed_expenses_table" ).draggable();
+});
+
