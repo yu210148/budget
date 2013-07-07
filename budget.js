@@ -16,5 +16,7 @@ $(document).ready(function() {
 $(function() {
     $( "#fixed_expenses_table" ).resizable();
     $( "#fixed_expenses_table" ).draggable();
+    $( "#grl_table" ).resizable();
+    $( "grl_table" ).draggable();
 });
 

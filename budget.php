@@ -85,8 +85,8 @@ HERE;
 
 function print_grl(){
 print <<<HERE
-<div class='grl'>
-  <table>
+<!--- <div class='grl'> --->
+  <table id="grl_table class="ui-widget-content">
     <tr>
       <th colspan=5><center>500 GRL</center></th>
     </tr>
@@ -103,7 +103,7 @@ while ($i <= 4){
   $i++;
   $amount = 20;
 } // end while
-print "</table></div>";
+print "</table><!--- </div> --->";
 } // end function definition for print_grl()
 
 function print_run(){
