@@ -86,7 +86,7 @@ HERE;
 function print_grl(){
 print <<<HERE
 <!--- <div class='grl'> --->
-  <table id="grl_table class="ui-widget-content">
+  <table id="grl_table" class="ui-widget-content">
     <tr>
       <th colspan=5><center>500 GRL</center></th>
     </tr>
