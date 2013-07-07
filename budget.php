@@ -108,8 +108,8 @@ print "</table><!--- </div> --->";
 
 function print_run(){
 print <<<HERE
-<div class='run'>
-  <table>
+<!--- <div class='run'> --->
+  <table id="run_table" class="ui-widget-content">
     <tr>
       <th colspan=6><center>600 Run</center></th>
     </tr>
@@ -126,7 +126,7 @@ while ($i <= 6){
   $i++;
   $amount = 20;
 } // end while
-print "</table></div>";
+print "</table><!--- </div> --->";
 } // end function definition for print_run()
 
 

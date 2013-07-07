@@ -3,7 +3,6 @@
   position: absolute;
   top: 10px;
   left: 95px;
-  padding: 5px; 
   width: 150px; 
   height: 150px; 
   padding: 0.5em;
@@ -19,7 +18,6 @@
   position: absolute;
   top: 185px;
   left: 50px;
-  padding: 5px;
   width: 150px; 
   height: 150px; 
   padding: 0.5em;
@@ -31,12 +29,18 @@
   text-align: center;
   margin: 0;
 }
-div.run {
+#run_table {
   position: absolute;
   top: 350px;
   left: 25px;
-  padding: 5px;
+  width: 150px; 
+  height: 150px; 
+  padding: 0.5em;
   font-family: 'Kaushan Script', cursive;
   font-size: medium;
   background-color: lightgrey
+}
+#run_table.td{
+  text-align: center;
+  margin: 0;
 }
