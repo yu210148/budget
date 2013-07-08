@@ -17,7 +17,7 @@
 #grl_table {
   position: absolute;
   top: 180px;
-  left: 50px;
+  left: 40px;
   width: 275px; 
   height: 150px; 
   padding: 0.5em;
@@ -33,7 +33,7 @@
   position: absolute;
   top: 350px;
   left: 25px;
-  width: 150px; 
+  width: 300px; 
   height: 150px; 
   padding: 0.5em;
   font-family: 'Kaushan Script', cursive;
