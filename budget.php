@@ -13,7 +13,7 @@
 <?php
 /**
 * Documentation, License etc.
-*
+* yu210148@gmail.com klucas@teksavvy.com klucas@utpress.utoronto.ca
 * @package budget
 */
  require_once 'standard_functions.php';
