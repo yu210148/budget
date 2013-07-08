@@ -47,7 +47,7 @@
  
 function print_header($db){
 print <<<HERE
-<!--- <div id="fixed_expenses" class="ui-widget-content"> --->
+<div id="fixed_expenses">
   <table id="fixed_expenses_table" class="ui-widget-content">
 HERE;
 
@@ -79,13 +79,13 @@ HERE;
 print <<<HERE
    </table>
    </form>
-<!--- </div> --->
+</div>
 HERE;
 } // end function definition for print_header()
 
 function print_grl(){
 print <<<HERE
-<!--- <div class='grl'> --->
+<div id='grl'>
   <table id="grl_table" class="ui-widget-content">
     <tr>
       <th colspan=5><center>500 GRL</center></th>
@@ -103,12 +103,12 @@ while ($i <= 4){
   $i++;
   $amount = 20;
 } // end while
-print "</table><!--- </div> --->";
+print "</table></div>";
 } // end function definition for print_grl()
 
 function print_run(){
 print <<<HERE
-<!--- <div class='run'> --->
+<div id='run'>
   <table id="run_table" class="ui-widget-content">
     <tr>
       <th colspan=6><center>600 Run</center></th>
@@ -126,7 +126,7 @@ while ($i <= 6){
   $i++;
   $amount = 20;
 } // end while
-print "</table><!--- </div> --->";
+print "</table></div>";
 } // end function definition for print_run()
 
 
