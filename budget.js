@@ -29,9 +29,10 @@ $(function() {
 
 function refresh_grl_tables() {
   $.get("refresh_grl_tables.php");
-  location.reload();
+  //location.reload();
   return false;
 }
+
 
 function update_number_of_weeks(num_of_weeks){
  var textInput = document.getElementById(num_of_weeks).value;
