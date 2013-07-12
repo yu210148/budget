@@ -104,6 +104,7 @@ while ($i <= 4){
   $amount = 20;
 } // end while
 print "</table></div>";
+return 0;
 } // end function definition for print_grl()
 
 function print_run(){
@@ -127,9 +128,22 @@ while ($i <= 6){
   $amount = 20;
 } // end while
 print "</table></div>";
+return 0;
 } // end function definition for print_run()
 
+function print_controls(){
+print <<<HERE
+<div id='controls'>
+<br>
 
+<a href="#" id='grl_reset' onclick="refresh_grl_tables();">Reset GRL</a> 
+
+<input type='text' id='num_of_weeks' name='num_of_weeks' onchange="update_number_of_weeks('num_of_weeks');">
+
+<br>
+</div>
+HERE;
+} // end function definition for print controls()
 
 // HERE'S MAIN
 $db = connect_to_mysql();
@@ -137,7 +151,7 @@ $db = connect_to_mysql();
 print_header($db);
 print_grl();
 print_run();
-
+print_controls();
 
 
 unset($db);

@@ -12,8 +12,7 @@ $(document).ready(function() {
 	    }).done(function( data ) {
 	      //alert( dataString );
 	    });
-	    
-      });
+    });
 });
 
 $(function() {
@@ -23,5 +22,21 @@ $(function() {
     $( "#grl_table" ).draggable();
     $( "#run_table" ).resizable();
     $( "#run_table" ).draggable();
+    $( "#controls" ).resizable();
+    $( "#controls" ).draggable();
 });
 
+function refresh_grl_tables() {
+  $.get("refresh_grl_tables.php");
+  return false;
+}
+function update_number_of_weeks(num_of_weeks){
+ var textInput = document.getElementById(num_of_weeks).value;
+ $.ajax({
+   type: "POST",
+   url: "update_number_of_weeks.php",
+   data: "numberOfWeeks="+textInput,
+ }).done(function( textInput ) {
+   //alert( textInput );
+ }); 
+}
