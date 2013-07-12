@@ -1,13 +1,10 @@
 #fixed_expenses {
   display: none;
 }
-#document {
-  position: relative;
-}
 
 #fixed_expenses_table {
-  position: absolute;
-  top: 10px;
+  position: float;
+  /*top: 10px; */
   left: 95px;
   width: 150px; 
   height: 150px; 
@@ -23,10 +20,10 @@
   display: none;
 }
 #grl_table {
-  position: absolute;
-  top: 180px; 
-  left: 40px;
-  /*bottom: 400px; */
+  position: float;
+  /*top: 180px; */
+  /*left: 40px; */
+  
   width: 275px; 
   height: 150px; 
   padding: 0.5em;
