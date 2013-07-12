@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $( "#fixed_expenses" ).slideDown('4000');
-    $( "#grl" ).slideDown('4000');
-    $( "#run" ).slideDown('4000');
+    $( "#fixed_expenses" ).fadeIn('fast');
+    $( "#grl" ).fadeIn('medium');
+    $( "#run" ).fadeIn('slow');
       $('#fixed_expenses_table :checkbox').change(function(){
 	dataString = $("#fixed").serialize();
 	var data = dataString;
