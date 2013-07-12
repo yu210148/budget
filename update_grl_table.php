@@ -31,6 +31,8 @@ function update_grl_table($db, $weekNumber, $amount, $isChecked){
 
 $db = connect_to_mysql();
 
+$weekNumber = $_POST["weekNumber"];
+$amount= $_POST["amount"];
 // test data
 $weekNumber = 1;
 $amount = 20;
@@ -38,6 +40,7 @@ $amount = 20;
 // find out if the element is already checked or not
 $isChecked = is_grl_checked($db, $weekNumber, $amount);
 update_grl_table($db, $weekNumber, $amount, $isChecked);
+
 
 unset($db);
 ?>
