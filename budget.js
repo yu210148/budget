@@ -28,7 +28,7 @@ $(function() {
 });
 
 function refresh_grl_tables() {
-  $.get("refresh_grl_tables.php")
+  $.get("refresh_grl_tables.php");
   location.reload();
   return false;
 }
