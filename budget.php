@@ -124,9 +124,9 @@ while ($i <= $numberOfWeeks){
   while ($amount <= 100){
     $isChecked = is_grl_checked($db, $i, $amount);
     if ($isChecked == 0){
-      print "<td><input type='checkbox'>$amount</td>";
+      print "<td><input id='$i' type='checkbox'>$amount</td>";
     } else {
-      print "<td><input type='checkbox' CHECKED>$amount</td>";
+      print "<td><input id='$i' type='checkbox' CHECKED>$amount</td>";
     } // end else
     $amount = $amount + 20;
   } // END while

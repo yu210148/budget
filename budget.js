@@ -32,6 +32,7 @@ function refresh_grl_tables() {
   location.reload();
   return false;
 }
+
 function update_number_of_weeks(num_of_weeks){
  var textInput = document.getElementById(num_of_weeks).value;
  $.ajax({
@@ -41,4 +42,11 @@ function update_number_of_weeks(num_of_weeks){
  }).done(function( textInput ) {
    //alert( textInput );
  }); 
-}
+});
+
+//TODO: Write a handler to get the grl weekNumber + amount passed to 
+ // update_grl_table.php when one of the checkboxes is clicked
+ 
+  
+ 
+ 
