@@ -2,6 +2,7 @@ $(document).ready(function() {
     $( "#fixed_expenses" ).fadeIn('fast');
     $( "#grl" ).fadeIn('medium');
     $( "#run" ).fadeIn('slow');
+    $( "#controls" ).fadeIn('slow');
       $('#fixed_expenses_table :checkbox').change(function(){
 	dataString = $("#fixed").serialize();
 	var data = dataString;
@@ -27,7 +28,8 @@ $(function() {
 });
 
 function refresh_grl_tables() {
-  $.get("refresh_grl_tables.php");
+  $.get("refresh_grl_tables.php")
+  location.reload();
   return false;
 }
 function update_number_of_weeks(num_of_weeks){

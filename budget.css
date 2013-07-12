@@ -20,8 +20,9 @@
 }
 #grl_table {
   position: absolute;
-  top: 180px;
+  top: 180px; 
   left: 40px;
+  /*bottom: 400px; */
   width: 275px; 
   height: 150px; 
   padding: 0.5em;
@@ -52,6 +53,7 @@
   margin: 0;
 }
 #controls {
+  display: none;
   position: absolute;
   top: 575px;
   left: 18px;

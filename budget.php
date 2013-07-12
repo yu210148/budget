@@ -83,7 +83,16 @@ print <<<HERE
 HERE;
 } // end function definition for print_header()
 
-function print_grl(){
+function get_current_number_of_weeks($db){
+  $sql = "SELECT Config.Value FROM Config WHERE Config.Parameter = 'NumberOfWeeks'";
+  $q = send_query($db, $sql);
+  while ($row = $q->fetch(PDO::FETCH_ASSOC)){
+    $numberOfWeeks = $row['Value'];
+  } // end while
+  return $numberOfWeeks;
+} // end function definition for get_current_number_of_weeks()
+
+function print_grl($db){
 print <<<HERE
 <div id='grl'>
   <table id="grl_table" class="ui-widget-content">
@@ -91,9 +100,10 @@ print <<<HERE
       <th colspan=5><center>500 GRL</center></th>
     </tr>
 HERE;
+$numberOfWeeks = get_current_number_of_weeks($db);
 $i = 1;
 $amount = 20;
-while ($i <= 4){
+while ($i <= $numberOfWeeks){
   print "<tr>";
   while ($amount <= 100){
     print "<td><input type='checkbox'>$amount</td>";
@@ -131,16 +141,13 @@ print "</table></div>";
 return 0;
 } // end function definition for print_run()
 
-function print_controls(){
+function print_controls($db){
+$numberOfWeeks = get_current_number_of_weeks($db);
 print <<<HERE
-<div id='controls'>
-<br>
-
+<div id='controls' class="ui-widget-content">
+<b><center>Controls</center></b>
+<input type='text' id='num_of_weeks' name='num_of_weeks' value='$numberOfWeeks' onkeyup="update_number_of_weeks('num_of_weeks');">
 <a href="#" id='grl_reset' onclick="refresh_grl_tables();">Reset GRL</a> 
-
-<input type='text' id='num_of_weeks' name='num_of_weeks' onchange="update_number_of_weeks('num_of_weeks');">
-
-<br>
 </div>
 HERE;
 } // end function definition for print controls()
@@ -149,9 +156,9 @@ HERE;
 $db = connect_to_mysql();
 
 print_header($db);
-print_grl();
+print_grl($db);
 print_run();
-print_controls();
+print_controls($db);
 
 
 unset($db);
