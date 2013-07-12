@@ -167,7 +167,7 @@ $numberOfWeeks = get_current_number_of_weeks($db);
 print <<<HERE
 <div id='controls' class="ui-widget-content">
 <b><center>Controls</center></b>
-<input type='text' id='num_of_weeks' name='num_of_weeks' value='$numberOfWeeks' onkeyup="update_number_of_weeks('num_of_weeks');">
+<input type='text' id='num_of_weeks' class='ui-widget' name='num_of_weeks' value='$numberOfWeeks' onkeyup="update_number_of_weeks('num_of_weeks');">
 <a href="#" id='grl_reset' onclick="refresh_grl_tables();">Reset GRL</a> 
 </div>
 HERE;
