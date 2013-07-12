@@ -92,6 +92,22 @@ function get_current_number_of_weeks($db){
   return $numberOfWeeks;
 } // end function definition for get_current_number_of_weeks()
 
+function is_grl_checked($db, $weekNumber, $amount){
+  // function that takes the week number and amount
+  // and returns 0 if it's not checked 1 if it is in
+  // the database
+  $sql = "SELECT fChecked FROM grl_week$weekNumber WHERE Amount = $amount";
+  $q = send_query($db, $sql);
+  while ($row = $q->fetch(PDO::FETCH_ASSOC)){
+    $isChecked = $row['fChecked'];
+  } // end while
+  if (0 == $isChecked){
+    return 0;
+  } else {
+    return 1;
+  } // end else
+} // end function definition is_grl_checked()
+
 function print_grl($db){
 print <<<HERE
 <div id='grl'>
@@ -106,7 +122,12 @@ $amount = 20;
 while ($i <= $numberOfWeeks){
   print "<tr>";
   while ($amount <= 100){
-    print "<td><input type='checkbox'>$amount</td>";
+    $isChecked = is_grl_checked($db, $i, $amount);
+    if ($isChecked == 0){
+      print "<td><input type='checkbox'>$amount</td>";
+    } else {
+      print "<td><input type='checkbox' CHECKED>$amount</td>";
+    } // end else
     $amount = $amount + 20;
   } // END while
   print "</tr>";
