@@ -1,6 +1,10 @@
 #fixed_expenses {
   display: none;
 }
+#document {
+  position: relative;
+}
+
 #fixed_expenses_table {
   position: absolute;
   top: 10px;

@@ -10,6 +10,7 @@
 <link rel=StyleSheet href="budget.css" type="text/css">
 <head>
 <body>
+<div id='document'>
 <?php
 /**
 * Documentation, License etc.
@@ -184,5 +185,6 @@ print_controls($db);
 
 unset($db);
 ?>
+</div>
 </body>
-
+</html>
