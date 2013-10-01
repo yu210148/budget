@@ -179,7 +179,7 @@ HERE;
 $db = connect_to_mysql();
 
 print_header($db);
-//print_grl($db);
+print_grl($db);
 //print_run();
 //print_controls($db);
 
