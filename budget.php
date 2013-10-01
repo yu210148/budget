@@ -89,7 +89,7 @@ function get_current_number_of_weeks($db){
   $sql = "SELECT Config.HowManyWeeksGRL FROM Config WHERE ConfigID = 1";
   $q = send_query($db, $sql);
   while ($row = $q->fetch(PDO::FETCH_ASSOC)){
-    $numberOfWeeks = $row['Value'];
+    $numberOfWeeks = $row['HowManyWeeksGRL'];
   } // end while
   return $numberOfWeeks;
 } // end function definition for get_current_number_of_weeks()
