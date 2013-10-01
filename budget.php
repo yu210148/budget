@@ -14,6 +14,7 @@
 <?php
 /**
 * Documentation, License etc.
+* Licence GPL v2 or later.
 * yu210148@gmail.com klucas@teksavvy.com klucas@utpress.utoronto.ca
 * @package budget
 */
@@ -178,9 +179,9 @@ HERE;
 $db = connect_to_mysql();
 
 print_header($db);
-print_grl($db);
-print_run();
-print_controls($db);
+//print_grl($db);
+//print_run();
+//print_controls($db);
 
 
 unset($db);
