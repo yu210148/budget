@@ -21,7 +21,7 @@
  require_once 'standard_functions.php';
  date_default_timezone_set('America/Toronto');
 
- function refresh_fixed_expenses_table($db){
+function refresh_fixed_expenses_table($db){
  // this function is not called as this is a constant table and 
  // does not need to be refreshed.  I wrote this very early in 
  // the morning before I realized what I was doing :) 
@@ -94,17 +94,28 @@ function get_current_number_of_weeks($db){
   return $numberOfWeeks;
 } // end function definition for get_current_number_of_weeks()
 
+function get_total_grl($db){
+  // a function to read the total grl and return it
+  $sql = "SELECT Config.TotalGRLPerWeek FROM Config WHERE Config.ConfigID = 1";
+  $q = send_query($db, $sql);
+  while ($row = $q->fetch(PDO::FETCH_ASSOC)){
+    $amount = $row['TotalGRLPerWeek'];
+  } // end while
+  return $amount;
+} // end function definition get_total_grl()
+
 function create_grl_tables($db){
   // a function to create the tables for the set number of weeks
   // not sure if this goes here  or not but it's got to go somewhere
   $numberOfWeeks = get_current_number_of_weeks($db);
+  $totalGRL = get_total_grl($db);
   $i = 1;
   while ($i <= $numberOfWeeks){
     $sql = "CREATE TABLE grl_week$i (grl_week$i" . "ID INT NOT NULL AUTO_INCREMENT, Amount INT, fChecked INT, PRIMARY KEY ( grl_week$i" . "ID )) ";
     send_query($db, $sql);
     // insert values in multiples of 20
     $p = 20;
-    while ($p <= 100){ //TODO: the magic number 100 here is the total for grl and should be set in the config table
+    while ($p <= $totalGRL){ //TODO: the magic number 100 here is the total for grl and should be set in the config table
       $sql = "INSERT INTO grl_week$i VALUES (NULL, $p, 0)";
       send_query($db, $sql);
       $p = $p + 20;
@@ -152,14 +163,16 @@ function is_grl_checked($db, $weekNumber, $amount){
 } // end function definition is_grl_checked()
 
 function print_grl($db){
+$numberOfWeeks = get_current_number_of_weeks($db);
+$total = get_total_grl($db);
 print <<<HERE
 <div id='grl'>
   <table id="grl_table" class="ui-widget-content">
     <tr>
-      <th colspan=5><center>500 GRL</center></th>
+      <th colspan=5><center>$total GRL</center></th>
     </tr>
 HERE;
-$numberOfWeeks = get_current_number_of_weeks($db);
+
 $i = 1;
 $amount = 20;
 while ($i <= $numberOfWeeks){
@@ -181,7 +194,22 @@ print "</table></div>";
 return 0;
 } // end function definition for print_grl()
 
-function print_run(){
+function is_run_checked($db, $weekNumber, $amount){
+  // function that takes the week number and amount
+  // and returns 0 if it's not checked 1 if it is
+  $sql = "SELECT fChecked FROM run_week$weekNumber WHERE Amount = $amount";
+  $q = send_query($db, $sql);
+  while ($row = $q->fetch(PDO::FETCH_ASSOC)){
+    $isChecked = $row['fChecked'];
+  } // end while
+  if (0 == $isChecked){
+    return 0;
+  } else {
+    return 1;
+  } // end else
+} // end function definition
+
+function print_run($db){
 print <<<HERE
 <div id='run'>
   <table id="run_table" class="ui-widget-content">
@@ -222,10 +250,11 @@ $db = connect_to_mysql();
 print_header($db);
 
 // testing this doesn't go here really
-create_run_tables($db);
+//create_grl_tables($db);
+//create_run_tables($db);
 
 print_grl($db);
-//print_run();
+print_run($db);
 //print_controls($db);
 
 
