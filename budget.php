@@ -112,7 +112,28 @@ function create_grl_tables($db){
     $i++;
   } // end while
   return 0;
-}
+} // end function definition
+
+function create_run_tables($db){
+  // a function to create tables for the set number of weeks
+  // like the grl table create function, I'm not sure if this
+  // goes here but for now....
+  $numberOfWeeks = get_current_number_of_weeks($db);
+  $i = 1;
+  while ($i <= $numberOfWeeks){
+    $sql = "CREATE TABLE run_weeek$i (run_week$i" . "ID INT NOT NULL AUTO_INCREMENT, Amount INT, fChecked INT, PRIMARY KEY ( run_week$i" . "ID )) ";
+    send_query($db, $sql);
+    // insert values in multiples of 20
+    $p = 20;
+    while ($p <= 120){ // TODO: the magic number 120 here is the total for run and should be set in the config table
+      $sql = "INSERT INTO run_week$i VALUES (NULL, $p, 0)";
+      send_query($db, $sql);
+      $p = $p + 20;
+    } // end while
+    $i++;
+  } // end while
+  return 0;
+} // end function definition
 
 function is_grl_checked($db, $weekNumber, $amount){
   // function that takes the week number and amount
@@ -201,7 +222,7 @@ $db = connect_to_mysql();
 print_header($db);
 
 // testing this doesn't go here really
-//create_grl_tables($db);
+create_run_tables($db);
 
 print_grl($db);
 //print_run();
