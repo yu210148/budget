@@ -94,6 +94,26 @@ function get_current_number_of_weeks($db){
   return $numberOfWeeks;
 } // end function definition for get_current_number_of_weeks()
 
+function create_grl_tables($db){
+  // a function to create the tables for the set number of weeks
+  // not sure if this goes here  or not but it's got to go somewhere
+  $numberOfWeeks = get_current_number_of_weeks($db);
+  $i = 1;
+  while ($i <= $numberOfWeeks){
+    $sql = "CREATE TABLE grl_week$i (grl_week$i" . "ID INT NOT NULL AUTO_INCREMENT, Amount INT, fChecked INT, PRIMARY KEY ( grl_week$i" . "ID )) ";
+    send_query($db, $sql);
+    // insert values in multiples of 20
+    $p = 20;
+    while ($p <= 100){ //TODO: the magic number 100 here is the total for grl and should be set in the config table
+      $sql = "INSERT INTO grl_week$i VALUES (NULL, $p, 0)";
+      send_query($db, $sql);
+      $p = $p + 20;
+    } // end while
+    $i++;
+  } // end while
+  return 0;
+}
+
 function is_grl_checked($db, $weekNumber, $amount){
   // function that takes the week number and amount
   // and returns 0 if it's not checked 1 if it is in
@@ -179,6 +199,10 @@ HERE;
 $db = connect_to_mysql();
 
 print_header($db);
+
+// testing this doesn't go here really
+create_grl_tables($db);
+
 print_grl($db);
 //print_run();
 //print_controls($db);
