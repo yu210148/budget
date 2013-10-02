@@ -201,7 +201,7 @@ $db = connect_to_mysql();
 print_header($db);
 
 // testing this doesn't go here really
-create_grl_tables($db);
+//create_grl_tables($db);
 
 print_grl($db);
 //print_run();
