@@ -104,6 +104,16 @@ function get_total_grl($db){
   return $amount;
 } // end function definition get_total_grl()
 
+function get_total_run($db){
+  // a function to read the total run and return it
+  $sql = "SELECT Config.TotalRUNPerWeek FROM Config WHERE Config.ConfigID = 1";
+  $q = send_query($db, $sql);
+  while ($row = $q->fetch(PDO::FETCH_ASSOC)){
+    $amount = $row['TotalRUNPerWeek'];
+  } // end while
+  return $amount;
+} // end function definition
+
 function create_grl_tables($db){
   // a function to create the tables for the set number of weeks
   // not sure if this goes here  or not but it's got to go somewhere
@@ -177,7 +187,7 @@ $i = 1;
 $amount = 20;
 while ($i <= $numberOfWeeks){
   print "<tr>";
-  while ($amount <= 100){
+  while ($amount <= 100){ //TODO: get the 100 magic number from the config db here
     $isChecked = is_grl_checked($db, $i, $amount);
     if ($isChecked == 0){
       print "<td><input id='$i' type='checkbox'>$amount</td>";
@@ -210,19 +220,26 @@ function is_run_checked($db, $weekNumber, $amount){
 } // end function definition
 
 function print_run($db){
+$numberOfWeeks = get_current_number_of_weeks($db);
+$total = get_total_run($db);
 print <<<HERE
 <div id='run'>
   <table id="run_table" class="ui-widget-content">
     <tr>
-      <th colspan=6><center>600 Run</center></th>
+      <th colspan=6><center>$total Run</center></th>
     </tr>
 HERE;
 $i = 1;
 $amount = 20;
-while ($i <= 6){
+while ($i <= $numberOfWeeks){
   print "<tr>";
-  while ($amount <= 120){
-    print "<td><input type='checkbox'>$amount</td>";
+  while ($amount <= 120){ //TODO: get the 120 magic number from the config db here
+    $isChecked = is_run_checked($db, $i, $amount);
+    if ($isChecked == 0){
+      print "<td><input id='$i' type='checkbox'>$amount</td>";
+    } else {
+      print "<td><input id='$i' type='checkbox' CHECKED>$amount</td>";
+    } // end else
     $amount = $amount + 20;
     } // end while
   print "</tr>";
