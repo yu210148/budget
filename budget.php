@@ -121,7 +121,7 @@ function create_run_tables($db){
   $numberOfWeeks = get_current_number_of_weeks($db);
   $i = 1;
   while ($i <= $numberOfWeeks){
-    $sql = "CREATE TABLE run_weeek$i (run_week$i" . "ID INT NOT NULL AUTO_INCREMENT, Amount INT, fChecked INT, PRIMARY KEY ( run_week$i" . "ID )) ";
+    $sql = "CREATE TABLE run_week$i (run_week$i" . "ID INT NOT NULL AUTO_INCREMENT, Amount INT, fChecked INT, PRIMARY KEY ( run_week$i" . "ID )) ";
     send_query($db, $sql);
     // insert values in multiples of 20
     $p = 20;
