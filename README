@@ -1,0 +1,12 @@
+THIS DOES NOT WORK (yet?). DON'T EXPECT THIS TO WORK. IT DOES
+NOT WORK.
+
+It's a php version of a personal budget system that I've used on 
+paper for years.  It keeps track of how much has been spent in 
+a given number of weeks (typically I refresh it each month when
+I get paid).  The top card is fixed expenses (e.g., bills), the
+middle a check list of money earmarked for groceries and food, 
+and the bottom is 'walking around money' in a check list in $20
+increments. 
+
+KL.
