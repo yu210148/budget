@@ -1,7 +1,8 @@
 <?php
 function connect_to_mysql(){
   try {
-    $db = new PDO('mysql:host=localhost;dbname=budget;charset=utf8', 'klucas', '8clock9');
+    // change foo and bar below to username and password for the database
+    $db = new PDO('mysql:host=localhost;dbname=budget;charset=utf8', 'foo', 'bar');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   }
